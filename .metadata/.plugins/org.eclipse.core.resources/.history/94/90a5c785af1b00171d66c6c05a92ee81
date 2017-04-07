@@ -28,13 +28,12 @@ public class Main {
 		while(!Button.ENTER.isDown()){   //Apparently infinite while loops break things, so loop until enter is pressed
 			
 			Color.fetchSample(colorSamples, 0);   //Take a sample from color sensor and write to Colorsamples array
-			Delay.msDelay(2);   //This may or may not be needed, but was in the tutorial I read
 			text.drawString("Color sensor value is:  " + colorSamples[0], 0, 3);  //Print color value for debugging
 			
 			if(colorSamples[0] == 1){
 				text.drawString("Color sensor reads BLACK!", 1,4);
 			}
-	       
+	        Delay.msDelay(2);   //This may or may not be needed, but was in the tutorial I read
 			
 	        //DO SOME STUFF
 		}

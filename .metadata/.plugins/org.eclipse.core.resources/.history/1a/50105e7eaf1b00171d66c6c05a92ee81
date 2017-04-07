@@ -6,7 +6,6 @@ import lejos.hardware.ev3.EV3;
 import lejos.hardware.lcd.TextLCD;
 import lejos.hardware.motor.Motor;
 import lejos.hardware.port.SensorPort;
-import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3GyroSensor;
 import lejos.utility.Delay;
 
@@ -14,27 +13,22 @@ public class Main {
 
 	static int theta;
 	
-	static float[] colorSamples = new float[3];
+	static float[] AngleSamples = new float[3];
 	public static void main(String[] args) throws InterruptedException{
 		
 		EV3 ev3brick =(EV3) BrickFinder.getLocal();
 		TextLCD text = ev3brick.getTextLCD();
 		EV3GyroSensor Gyro = new EV3GyroSensor(SensorPort.S1);
-		EV3ColorSensor Color = new EV3ColorSensor(SensorPort.S1);
-		
-		Color.getColorIDMode();  //tells the sensor to return a color  (NONE, BLACK, BLUE, GREEN, YELLOW, RED, WHITE, BROWN) which is a value (0,1,2,3,4,4,5,6)
+
+		Gyro.getAngleMode(); //Tell the gyro we are in angle mode
+	
 		text.drawString("Robot Running!",0,0);
 		
 		while(!Button.ENTER.isDown()){   //Apparently infinite while loops break things, so loop until enter is pressed
 			
-			Color.fetchSample(colorSamples, 0);   //Take a sample from color sensor and write to Colorsamples array
-			Delay.msDelay(2);   //This may or may not be needed, but was in the tutorial I read
-			text.drawString("Color sensor value is:  " + colorSamples[0], 0, 3);  //Print color value for debugging
-			
-			if(colorSamples[0] == 1){
-				text.drawString("Color sensor reads BLACK!", 1,4);
-			}
-	       
+			Gyro.getAngleMode().fetchSample(AngleSamples, 0);   //Take a sample from the gyro and write to the AngleSamples Array starting at index 0
+			//text.drawString("Angle X is " + AngleSamples[0], 0, 3);  //Print Gyro Angle for debugging
+	        Delay.msDelay(2);   //This may or may not be needed, but was in the tutorial I read
 			
 	        //DO SOME STUFF
 		}
