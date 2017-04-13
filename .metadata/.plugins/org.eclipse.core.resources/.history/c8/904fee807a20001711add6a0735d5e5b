@@ -31,32 +31,23 @@ public class Main {
 			text.drawString("Color sensor value is:  " + colorSamples[0], 0, 3);  //Print color value for debugging
 			
 /*
-       		if(colorSamples[0] == 1){
-       			//Color sensor reads black, stop doing everything
-   				text.drawString("Color sensor reads BLACK!", 1,4);
-				setSpeed(0);
+       
+ *			if(Ultra Sonic < Threshold distance){
+ *				//There is a wall and you should back up
+ *
+ *				setSpeed(1000);
+ *				moveBack();
+ *			} else {
+ *				//There is no wall keep going
+  *				if(Sensor pressed){
+					//Make a decision, either flip..turn..or whatever
+				} else {
 			
-			} else {
-				//Colorsensor is not reading black
-				 
-  				if(UltraSonic < Threshold distance){
-  					//There is a wall and you should back up
-  
-  					setSpeed(1000);
-  					moveBack();
-  				} else {
-  					//There is no wall keep going
-    				if(Sensor pressed){
-						//Make a decision, either flip..turn..or whatever
-					} else {
-			
-						//We haven't seen anything, go wander around
-						setSpeed(1000);
-						moveForward();
-					}
-				}			
+					//We haven't seen anything, go wander around
+					setSpeed(1000);
+					moveForward();
+				}
 			}
-
 
  */
 			if(colorSamples[0] == 1){
